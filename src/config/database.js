@@ -1,14 +1,13 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(process.env.MONGOURL, {
+  .connect("mongodb://localhost:27017/sky", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false,
   })
   .then(() => {
-    console.log("DATABASE CONNECTED!");
+    console.log("Banco conectado!");
   });
 mongoose.Promise = global.Promise;
 module.exports = mongoose;

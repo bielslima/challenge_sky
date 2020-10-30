@@ -1,14 +1,18 @@
-require("dotenv").config({
-    path:`${__dirname}'/./../${process.env.NODE_ENV}/.env'`
-})
-const express = require("express")
-const app = express()
+require("dotenv").config();
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const rotas = require("./routes/index");
+const express = require("express");
+const app = express();
+const porta = process.env.PORT || 3555;
 
-app.get('*', function (req, res) {
-    res.json(404, {
-      "mensagem":`A rota '${req.url}' não existe!`,
-  })
-})
-app.listen(3333, ()=>{
-    console.log("server is running");
-})
+rotas.configurarRotas(app);
+
+// app.use(cors());
+
+app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+
+app.listen(porta, () => {
+    console.log(`Serviço rodando na url: http://localhost:${porta}`);
+});
