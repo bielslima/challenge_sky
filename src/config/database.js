@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost:27017/sky", {
+  .connect(process.env.MONGOURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
