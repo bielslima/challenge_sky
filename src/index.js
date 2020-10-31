@@ -6,12 +6,11 @@ const express = require("express");
 const app = express();
 const porta = process.env.PORT || 3555;
 
-rotas.configurarRotas(app);
-
-// app.use(cors());
-
+app.use(cors());
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+rotas.configurarRotas(app);
 
 app.listen(porta, () => {
     console.log(`Serviço rodando na url: http://localhost:${porta}`);

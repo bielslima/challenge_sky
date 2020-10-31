@@ -7,7 +7,6 @@ const UsuarioSchema = new mongoose.Schema({
   },
   token: {
     type: String,
-    required: true,
   },
   nome: {
     type: String,
@@ -17,20 +16,23 @@ const UsuarioSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  telefones: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Telefone",
-  }],
+  telefones: [
+    {
+      numero: String,
+      ddd: String,
+    }
+  ],
   ultimo_login: {
     type: Date,
+    default: Date.now(),
   },
   data_criacao: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
   data_atualizacao: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
 });
 
